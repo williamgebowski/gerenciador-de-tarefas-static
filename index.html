@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Minha Lista de Tarefas</h1>
+        
+        <div class="todo-input">
+            <input type="text" id="taskInput" placeholder="Adicione uma nova tarefa...">
+            <button id="addButton">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+        <div class="todo-list" id="taskList">
+            <!-- As tarefas serão inseridas aqui via JavaScript -->
+        </div>
+
+        <div class="todo-stats">
+            <span id="taskCount">0 tarefas</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
