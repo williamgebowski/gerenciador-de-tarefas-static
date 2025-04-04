@@ -159,11 +159,12 @@ h1::after {
 #taskList li:hover {
     transform: translateX(5px);
     border-color: #a87c5f40;
+    box-shadow: 0 4px 8px rgba(168, 124, 95, 0.15);
 }
 
 #taskList li::before {
     content: '📝';
-    margin-right: 10px;
+    margin-right: 12px;
     font-size: 1.2rem;
     transition: transform 0.3s ease;
 }
@@ -173,19 +174,38 @@ h1::after {
     color: #68a357;
 }
 
+#taskList li span {
+    flex: 1;
+    margin-right: 15px;
+    word-break: break-word;
+    line-height: 1.4;
+}
+
 #taskList li button {
-    background-color: transparent;
+    background-color: #fff;
     color: #c17676;
-    border: none;
-    padding: 6px 10px;
+    border: 1px solid #c1767630;
+    padding: 8px 12px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
 }
 
 #taskList li button:hover {
-    color: #a35555;
-    transform: scale(1.1);
+    background-color: #c17676;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(193, 118, 118, 0.2);
+}
+
+#taskList li button i {
+    font-size: 1rem;
 }
 
 /* Estatísticas */
@@ -219,5 +239,20 @@ h1::after {
     .header-decoration, .footer-decoration {
         font-size: 1.2rem;
         gap: 1rem;
+    }
+
+    #taskList li {
+        padding: 12px 15px;
+        font-size: 1rem;
+    }
+
+    #taskList li button {
+        padding: 6px 10px;
+        min-width: 32px;
+        height: 32px;
+    }
+
+    #taskList li span {
+        margin-right: 10px;
     }
 } 
