@@ -47,6 +47,7 @@ body {
     transform: rotate(-5deg);
     display: inline-block;
     transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 2px rgba(168, 124, 95, 0.2));
 }
 
 .decoration-item:hover {
@@ -117,13 +118,21 @@ h1::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     box-shadow: 0 2px 5px rgba(168, 124, 95, 0.3);
+}
+
+#addButton i {
+    transition: transform 0.3s ease;
 }
 
 #addButton:hover {
     background-color: #8b6346;
     transform: translateY(-2px);
+}
+
+#addButton:hover i {
+    transform: scale(1.1);
 }
 
 /* Lista de tarefas */
@@ -153,14 +162,14 @@ h1::after {
 }
 
 #taskList li::before {
-    content: '☐';
+    content: '📝';
     margin-right: 10px;
-    color: #a87c5f;
     font-size: 1.2rem;
+    transition: transform 0.3s ease;
 }
 
 #taskList li.completed::before {
-    content: '☑';
+    content: '✅';
     color: #68a357;
 }
 
@@ -171,7 +180,7 @@ h1::after {
     padding: 6px 10px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 #taskList li button:hover {
