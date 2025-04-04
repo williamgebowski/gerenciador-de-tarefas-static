@@ -139,13 +139,15 @@ h1::after {
 #taskList {
     list-style: none;
     margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 #taskList li {
     background-color: #fff;
-    padding: 14px 18px;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    padding: 16px 20px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -154,6 +156,19 @@ h1::after {
     font-size: 1.1rem;
     color: #5c4032;
     box-shadow: 0 2px 4px rgba(168, 124, 95, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+#taskList li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: #a87c5f40;
+    border-radius: 2px;
 }
 
 #taskList li:hover {
@@ -162,50 +177,46 @@ h1::after {
     box-shadow: 0 4px 8px rgba(168, 124, 95, 0.15);
 }
 
-#taskList li::before {
-    content: '📝';
+#taskList li .task-icon {
     margin-right: 12px;
     font-size: 1.2rem;
     transition: transform 0.3s ease;
 }
 
-#taskList li.completed::before {
-    content: '✅';
+#taskList li.completed .task-icon {
     color: #68a357;
 }
 
-#taskList li span {
+#taskList li .task-text {
     flex: 1;
-    margin-right: 15px;
+    margin-right: 20px;
     word-break: break-word;
     line-height: 1.4;
+    padding: 4px 0;
 }
 
-#taskList li button {
-    background-color: #fff;
+#taskList li .delete-btn {
+    background-color: transparent;
     color: #c17676;
-    border: 1px solid #c1767630;
-    padding: 8px 12px;
+    border: none;
+    padding: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 1rem;
+    font-size: 1.2rem;
     border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 36px;
     height: 36px;
+    opacity: 0.7;
 }
 
-#taskList li button:hover {
-    background-color: #c17676;
-    color: #fff;
-    transform: scale(1.05);
-    box-shadow: 0 2px 4px rgba(193, 118, 118, 0.2);
-}
-
-#taskList li button i {
-    font-size: 1rem;
+#taskList li .delete-btn:hover {
+    background-color: #c1767610;
+    color: #c17676;
+    transform: scale(1.1);
+    opacity: 1;
 }
 
 /* Estatísticas */
@@ -218,41 +229,45 @@ h1::after {
 }
 
 /* Responsividade */
-@media (max-width: 480px) {
-    .container {
-        padding: 1.5rem;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    .todo-input {
-        flex-direction: column;
-    }
-
-    #addButton {
-        width: 100%;
-        height: 40px;
-    }
-
-    .header-decoration, .footer-decoration {
-        font-size: 1.2rem;
-        gap: 1rem;
-    }
-
+@media (max-width: 768px) {
     #taskList li {
-        padding: 12px 15px;
+        padding: 14px 16px;
         font-size: 1rem;
     }
 
-    #taskList li button {
-        padding: 6px 10px;
-        min-width: 32px;
-        height: 32px;
+    #taskList li .task-text {
+        margin-right: 15px;
     }
 
-    #taskList li span {
-        margin-right: 10px;
+    #taskList li .delete-btn {
+        min-width: 32px;
+        height: 32px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #taskList li {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    #taskList li .task-text {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    #taskList li .delete-btn {
+        align-self: flex-end;
+        min-width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    #taskList li:hover {
+        transform: translateX(3px);
     }
 } 
