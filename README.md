@@ -1,31 +1,47 @@
-# 📝✨ To-Do List Vintage
+# 📋 Minha Lista de Tarefas
 
-Um aplicativo de lista de tarefas elegante e intuitivo, inspirado no estilo vintage de planners digitais. Com design responsivo e experiência de usuário suave, este projeto combina funcionalidade prática com estética agradável.
+Uma To-Do List com visual vintage, responsivo e funcional. Criada com HTML, CSS e JavaScript, usando localStorage e design manuscrito.
 
-![Screenshot do projeto](screenshot.png)
+## 🚀 Funcionalidades
+
+- ✅ Adicionar e remover tarefas
+- ✏️ Marcar como concluída
+- 📦 Salvar no navegador (offline-ready)
+- 🧼 Design retrô com ícones e animações suaves
+- 📱 Totalmente responsiva
+
+## 🛠️ Tecnologias
+
+- HTML5
+- CSS3
+- JavaScript
+- Font Awesome
+- Google Fonts (Patrick Hand, Shadows Into Light)
+
+## 🖼️ Preview
+
+![Preview da To-Do List](preview.png)
+
+## 💻 Como usar
+
+1. Clone o repositório
+2. Abra `index.html` no navegador
+3. Ou acesse: 🔗 [GitHub Pages](https://seu-usuario.github.io/gerenciador-de-tarefas-static)
+
+## 🎨 Design
+
+- Estilo: Vintage planner
+- Logo: ✅
+- Favicon: ✅
+- Tema com tons bege, café e verde oliva
 
 ## 🎯 Funcionalidades
 
-- ✨ Adicionar e remover tarefas com facilidade
 - 💾 Salvar tarefas localmente (localStorage)
 - 📊 Contador de tarefas totais e concluídas
 - 🎨 Design retrô com tema suave e elegante
 - 📱 Layout totalmente responsivo
 - 🖌️ Tipografia manuscrita e ícones modernos
-
-## 🛠️ Tecnologias Utilizadas
-
-- HTML5
-- CSS3
-  - Flexbox
-  - Media Queries
-  - Transições e animações
-- JavaScript
-  - localStorage
-  - Manipulação do DOM
-- Fontes do Google
-  - Patrick Hand
-- Font Awesome para ícones
 
 ## 🚀 Como Rodar Localmente
 
@@ -46,14 +62,6 @@ cd todo-list
 Este projeto está hospedado no GitHub Pages. Para acessar a versão online:
 
 [https://seu-usuario.github.io/todo-list](https://seu-usuario.github.io/todo-list)
-
-## 🎨 Design
-
-O projeto utiliza uma paleta de cores suave e vintage:
-- Bege claro (#f8e8d8)
-- Marrom suave (#a87c5f)
-- Verde pastel (#68a357)
-- Vermelho suave (#c17676)
 
 ## 📱 Responsividade
 
