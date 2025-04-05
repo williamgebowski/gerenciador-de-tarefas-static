@@ -67,6 +67,17 @@ function renderTasks() {
     });
 }
 
+function createTaskElement(taskText) {
+    const li = document.createElement('li');
+    li.innerHTML = `
+        <span class="task-text">${taskText}</span>
+        <button class="delete-btn" aria-label="Remover tarefa">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    `;
+    return li;
+}
+
 // Event Listeners
 addButton.addEventListener('click', addTask);
 

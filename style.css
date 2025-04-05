@@ -150,12 +150,12 @@ h1::after {
     margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
 }
 
 #taskList li {
     background-color: #fff;
-    padding: 18px 22px;
+    padding: 18px 24px;
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -197,6 +197,8 @@ h1::after {
     line-height: 1.5;
     padding: 4px 0;
     transition: color 0.3s ease;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.1rem;
 }
 
 #taskList li.completed .task-text {
@@ -214,13 +216,18 @@ h1::after {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-size: 1.2rem;
-    border-radius: 12px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 40px;
+    width: 40px;
     height: 40px;
     opacity: 0.8;
+    box-shadow: 0 2px 4px rgba(193, 118, 118, 0.1);
+}
+
+#taskList li .delete-btn i {
+    transition: transform 0.3s ease;
 }
 
 #taskList li .delete-btn:hover {
@@ -229,6 +236,10 @@ h1::after {
     transform: scale(1.1) rotate(5deg);
     opacity: 1;
     box-shadow: 0 3px 8px rgba(193, 118, 118, 0.2);
+}
+
+#taskList li .delete-btn:hover i {
+    transform: scale(1.1);
 }
 
 /* Estatísticas */
@@ -253,17 +264,19 @@ h1::after {
     }
 
     #taskList li {
-        padding: 16px 18px;
+        padding: 16px 20px;
         font-size: 1.1rem;
     }
 
     #taskList li .task-text {
         margin-right: 15px;
+        font-size: 1.05rem;
     }
 
     #taskList li .delete-btn {
-        min-width: 36px;
+        width: 36px;
         height: 36px;
+        font-size: 1.1rem;
     }
 
     .header-decoration, .footer-decoration {
@@ -300,19 +313,28 @@ h1::after {
     }
 
     #taskList li {
-        padding: 14px 16px;
+        padding: 14px 18px;
         font-size: 1.05rem;
-        border-radius: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    #taskList li .task-text {
+        margin-right: 0;
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    #taskList li .delete-btn {
+        align-self: flex-end;
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
     }
 
     #taskList li:hover {
         transform: translateX(4px) translateY(-1px);
-    }
-
-    #taskList li .delete-btn {
-        min-width: 34px;
-        height: 34px;
-        font-size: 1.1rem;
     }
 
     .header-decoration, .footer-decoration {
