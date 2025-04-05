@@ -184,6 +184,7 @@ button:hover {
     gap: 10px;
 }
 
+/* Botões de ação da tarefa */
 .complete-btn,
 .delete-btn {
     background: none;
@@ -195,6 +196,8 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 36px;
+    height: 36px;
 }
 
 .complete-btn {
@@ -255,6 +258,13 @@ button:hover {
     .task-text {
         font-size: 1em;
     }
+
+    .complete-btn,
+    .delete-btn {
+        width: 34px;
+        height: 34px;
+        padding: 6px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -278,43 +288,36 @@ button:hover {
         width: 100%;
     }
 
-    /* Ajustes para itens da lista em mobile */
     .task-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
         padding: 12px;
     }
 
     .task-text {
-        width: 100%;
-        margin-right: 0;
+        width: auto;
+        margin-right: 10px;
         font-size: 1em;
         word-break: break-word;
     }
 
     .task-actions {
-        align-self: flex-end;
         display: flex;
-        gap: 10px;
-        margin-top: 5px;
+        gap: 8px;
+        margin-left: auto;
     }
 
     .complete-btn,
     .delete-btn {
-        width: 38px;
-        height: 38px;
-        font-size: 1.1em;
-        border-radius: 10px;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        width: 32px;
+        height: 32px;
+        padding: 5px;
     }
 
     .complete-btn i,
     .delete-btn i {
-        font-size: 1.2em;
+        font-size: 1em;
     }
 
     /* Ajuste para hover em touch devices */
