@@ -446,7 +446,7 @@ button:hover {
     position: relative;
     overflow: hidden;
     opacity: 0.8;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .show-stats-btn {
@@ -476,14 +476,19 @@ button:hover {
 .history-container {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     background-color: rgba(255, 255, 255, 0.95);
-    border-top: 1px solid var(--secondary-color);
+    border-top: 1px solid transparent;
+    opacity: 0;
+    transform: translateY(-10px);
 }
 
 .history-container.visible {
     max-height: 300px;
     overflow-y: auto;
+    border-top-color: var(--secondary-color);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .history-list {
@@ -499,11 +504,20 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px;
+    padding: 12px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: var(--border-radius);
     border: 1px solid var(--secondary-color);
     font-size: 0.9em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    margin: 4px 0;
+}
+
+.history-item:hover {
+    transform: translateX(5px);
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .history-text {
@@ -536,6 +550,52 @@ button:hover {
     border-color: var(--accent-color);
 }
 
+.history-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.restore-btn,
+.delete-permanent-btn {
+    background: white;
+    border: 2px solid;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+
+.restore-btn {
+    border-color: var(--success-color);
+    color: var(--success-color);
+}
+
+.delete-permanent-btn {
+    border-color: var(--danger-color);
+    color: var(--danger-color);
+}
+
+.restore-btn:hover,
+.restore-btn:focus {
+    background-color: var(--success-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.delete-permanent-btn:hover,
+.delete-permanent-btn:focus {
+    background-color: var(--danger-color);
+    color: white;
+    transform: scale(1.1);
+}
+
 @media (max-width: 480px) {
     .todo-stats,
     .completed-stats,
@@ -548,13 +608,15 @@ button:hover {
         padding: 10px;
     }
 
-    .history-list {
-        padding: 8px;
+    .history-item {
+        padding: 10px;
+        font-size: 0.85em;
     }
 
-    .history-item {
-        padding: 6px;
-        font-size: 0.85em;
+    .restore-btn,
+    .delete-permanent-btn {
+        width: 28px;
+        height: 28px;
     }
 }
 
@@ -570,13 +632,15 @@ button:hover {
         padding: 8px;
     }
 
-    .history-list {
-        padding: 6px;
+    .history-item {
+        padding: 8px;
+        font-size: 0.8em;
     }
 
-    .history-item {
-        padding: 4px;
-        font-size: 0.8em;
+    .restore-btn,
+    .delete-permanent-btn {
+        width: 24px;
+        height: 24px;
     }
 }
 

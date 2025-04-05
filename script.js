@@ -26,8 +26,19 @@ let deletedTasks = JSON.parse(localStorage.getItem('deletedTasks')) || [];
 // Controle de visibilidade dos históricos
 function toggleHistory(container, button) {
     const isVisible = container.classList.contains('visible');
-    container.classList.toggle('visible');
-    button.classList.toggle('active');
+    
+    if (isVisible) {
+        container.style.maxHeight = container.scrollHeight + 'px';
+        setTimeout(() => {
+            container.classList.remove('visible');
+            button.classList.remove('active');
+        }, 50);
+    } else {
+        container.classList.add('visible');
+        button.classList.add('active');
+        container.style.maxHeight = container.scrollHeight + 'px';
+    }
+    
     return !isVisible;
 }
 
@@ -131,6 +142,7 @@ function updateDeletedHistoryList() {
     deletedTasks.forEach(task => {
         const li = document.createElement('li');
         li.className = 'history-item';
+        li.dataset.id = task.id;
         
         const taskText = document.createElement('span');
         taskText.className = 'history-text';
@@ -141,15 +153,31 @@ function updateDeletedHistoryList() {
         const timeAgo = getTimeAgo(new Date(task.deletedAt).getTime());
         taskTime.textContent = `Excluída ${timeAgo}`;
         
+        const actionsDiv = document.createElement('div');
+        actionsDiv.className = 'history-actions';
+        
         const restoreButton = document.createElement('button');
         restoreButton.className = 'restore-btn';
         restoreButton.setAttribute('aria-label', 'Restaurar nota');
         restoreButton.innerHTML = '<i class="fas fa-undo"></i>';
         restoreButton.addEventListener('click', () => restoreTask(task.id));
         
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'delete-permanent-btn';
+        deleteButton.setAttribute('aria-label', 'Remover permanentemente');
+        deleteButton.innerHTML = '<i class="fas fa-times"></i>';
+        deleteButton.addEventListener('click', () => {
+            if (confirm('Tem certeza que deseja remover permanentemente esta nota?')) {
+                deletePermanently(task.id);
+            }
+        });
+        
+        actionsDiv.appendChild(restoreButton);
+        actionsDiv.appendChild(deleteButton);
+        
         li.appendChild(taskText);
         li.appendChild(taskTime);
-        li.appendChild(restoreButton);
+        li.appendChild(actionsDiv);
         
         deletedHistoryList.appendChild(li);
     });
@@ -478,4 +506,29 @@ function moveTask(taskId, direction) {
     
     localStorage.setItem('tasks', JSON.stringify(tasks));
     renderTasks();
+}
+
+// Remover permanentemente uma nota excluída
+function deletePermanently(id) {
+    const taskIndex = deletedTasks.findIndex(task => task.id === id);
+    if (taskIndex !== -1) {
+        const listItem = document.querySelector(`.history-item[data-id="${id}"]`);
+        if (listItem) {
+            listItem.style.animation = 'fadeOut 0.3s ease-out forwards';
+            setTimeout(() => {
+                deletedTasks.splice(taskIndex, 1);
+                updateDeletedHistoryList();
+                updateStats();
+                
+                // Se não houver mais tarefas excluídas, fecha o histórico suavemente
+                if (deletedTasks.length === 0) {
+                    const container = deletedHistoryContainer;
+                    container.style.maxHeight = container.scrollHeight + 'px';
+                    setTimeout(() => {
+                        container.classList.remove('visible');
+                    }, 50);
+                }
+            }, 300);
+        }
+    }
 } 
