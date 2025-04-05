@@ -209,10 +209,16 @@ h1::after {
     text-decoration-thickness: 2px;
 }
 
+#taskList li .task-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+#taskList li .complete-btn,
 #taskList li .delete-btn {
     background-color: #fff;
-    color: #c17676;
-    border: 1px solid #c1767630;
+    border: 1px solid;
     padding: 8px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -224,11 +230,30 @@ h1::after {
     width: 40px;
     height: 40px;
     opacity: 0.8;
-    box-shadow: 0 2px 4px rgba(193, 118, 118, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+#taskList li .complete-btn {
+    color: #68a357;
+    border-color: #68a35730;
+}
+
+#taskList li .delete-btn {
+    color: #c17676;
+    border-color: #c1767630;
+}
+
+#taskList li .complete-btn i,
 #taskList li .delete-btn i {
     transition: transform 0.3s ease;
+}
+
+#taskList li .complete-btn:hover {
+    background-color: #68a357;
+    color: #fff;
+    transform: scale(1.1) rotate(-5deg);
+    opacity: 1;
+    box-shadow: 0 3px 8px rgba(104, 163, 87, 0.2);
 }
 
 #taskList li .delete-btn:hover {
@@ -239,6 +264,7 @@ h1::after {
     box-shadow: 0 3px 8px rgba(193, 118, 118, 0.2);
 }
 
+#taskList li .complete-btn:hover i,
 #taskList li .delete-btn:hover i {
     transform: scale(1.1);
 }
@@ -278,6 +304,7 @@ h1::after {
         font-size: 1.05rem;
     }
 
+    #taskList li .complete-btn,
     #taskList li .delete-btn {
         width: 36px;
         height: 36px;
@@ -331,8 +358,12 @@ h1::after {
         font-size: 1rem;
     }
 
-    #taskList li .delete-btn {
+    #taskList li .task-actions {
         align-self: flex-end;
+    }
+
+    #taskList li .complete-btn,
+    #taskList li .delete-btn {
         width: 34px;
         height: 34px;
         font-size: 1rem;

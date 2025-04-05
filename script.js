@@ -2,7 +2,8 @@
 const taskInput = document.getElementById('taskInput');
 const addButton = document.getElementById('addButton');
 const taskList = document.getElementById('taskList');
-const taskCount = document.getElementById('taskCount');
+const totalTasksSpan = document.getElementById('totalTasks');
+const completedTasksSpan = document.getElementById('completedTasks');
 
 // Array para armazenar as tarefas
 let tasks = [];
@@ -13,30 +14,38 @@ function loadTasks() {
     if (savedTasks) {
         tasks = JSON.parse(savedTasks);
         renderTasks();
+        updateStats();
     }
 }
 
 // Salva as tarefas no localStorage
 function saveTasks() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    updateTaskCount();
+    updateStats();
 }
 
-// Atualiza o contador de tarefas
-function updateTaskCount() {
-    const count = tasks.length;
-    taskCount.textContent = `${count} ${count === 1 ? 'tarefa' : 'tarefas'}`;
+// Atualiza as estatísticas
+function updateStats() {
+    const total = tasks.length;
+    const completed = tasks.filter(task => task.completed).length;
+    totalTasksSpan.textContent = `${total} ${total === 1 ? 'tarefa' : 'tarefas'}`;
+    completedTasksSpan.textContent = `${completed} ${completed === 1 ? 'completada' : 'completadas'}`;
 }
 
 // Adiciona uma nova tarefa
 function addTask() {
     const taskText = taskInput.value.trim();
     if (taskText) {
-        tasks.push({ text: taskText, completed: false });
+        const task = {
+            id: Date.now(),
+            text: taskText,
+            completed: false
+        };
+        tasks.push(task);
+        saveTasks();
         renderTasks();
         taskInput.value = '';
         taskInput.focus();
-        updateStats();
     }
 }
 
@@ -47,38 +56,57 @@ function removeTask(id) {
     renderTasks();
 }
 
+// Alterna o estado de conclusão de uma tarefa
+function toggleTask(id) {
+    const task = tasks.find(task => task.id === id);
+    if (task) {
+        task.completed = !task.completed;
+        saveTasks();
+        renderTasks();
+    }
+}
+
 // Renderiza todas as tarefas
 function renderTasks() {
     taskList.innerHTML = '';
     tasks.forEach(task => {
-        const taskElement = createTaskElement(task.text);
-        if (task.completed) {
-            taskElement.classList.add('completed');
-        }
+        const taskElement = createTaskElement(task);
         taskList.appendChild(taskElement);
     });
 }
 
-function createTaskElement(taskText) {
+// Cria um elemento de tarefa
+function createTaskElement(task) {
     const li = document.createElement('li');
     li.className = 'todo-item';
+    if (task.completed) {
+        li.classList.add('completed');
+    }
     
     const taskSpan = document.createElement('span');
     taskSpan.className = 'task-text';
-    taskSpan.textContent = taskText;
+    taskSpan.textContent = task.text;
+    
+    const actionsDiv = document.createElement('div');
+    actionsDiv.className = 'task-actions';
+    
+    const completeBtn = document.createElement('button');
+    completeBtn.className = 'complete-btn';
+    completeBtn.setAttribute('aria-label', task.completed ? 'Desfazer conclusão' : 'Concluir tarefa');
+    completeBtn.innerHTML = '<i class="fas fa-check"></i>';
+    completeBtn.addEventListener('click', () => toggleTask(task.id));
     
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'delete-btn';
     deleteBtn.setAttribute('aria-label', 'Remover tarefa');
     deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+    deleteBtn.addEventListener('click', () => removeTask(task.id));
     
-    deleteBtn.addEventListener('click', () => {
-        li.remove();
-        updateStats();
-    });
+    actionsDiv.appendChild(completeBtn);
+    actionsDiv.appendChild(deleteBtn);
     
     li.appendChild(taskSpan);
-    li.appendChild(deleteBtn);
+    li.appendChild(actionsDiv);
     
     return li;
 }
