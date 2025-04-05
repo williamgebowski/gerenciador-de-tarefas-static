@@ -156,6 +156,7 @@ button:hover {
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(92, 64, 50, 0.1);
     min-height: 76px;
+    width: 100%;
 }
 
 .task-item:hover {
@@ -178,6 +179,7 @@ button:hover {
     align-items: center;
     line-height: 1.4;
     word-break: break-word;
+    min-width: 0;
 }
 
 .task-text.completed {
@@ -191,6 +193,7 @@ button:hover {
     gap: 12px;
     padding: 0 8px;
     align-items: center;
+    flex-shrink: 0;
 }
 
 /* Botões de ação da tarefa */

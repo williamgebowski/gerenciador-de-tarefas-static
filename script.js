@@ -19,6 +19,7 @@ function updateStats() {
 // Criar elemento de tarefa
 function createTaskElement(task) {
     const li = document.createElement('li');
+    li.className = 'task-item';
     if (task.completed) {
         li.classList.add('completed');
     }
