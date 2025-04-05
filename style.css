@@ -202,11 +202,17 @@ h1::after {
     color: #5c4032;
 }
 
+#taskList li.completed {
+    background-color: #f8f8f8;
+    border-color: #68a35730;
+}
+
 #taskList li.completed .task-text {
     color: #68a357;
     text-decoration: line-through;
     text-decoration-color: #68a35760;
     text-decoration-thickness: 2px;
+    opacity: 0.8;
 }
 
 #taskList li .task-actions {

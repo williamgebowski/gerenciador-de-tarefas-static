@@ -93,7 +93,7 @@ function createTaskElement(task) {
     const completeBtn = document.createElement('button');
     completeBtn.className = 'complete-btn';
     completeBtn.setAttribute('aria-label', task.completed ? 'Desfazer conclusão' : 'Concluir tarefa');
-    completeBtn.innerHTML = '<i class="fas fa-check"></i>';
+    completeBtn.innerHTML = '<i class="fas fa-check-circle"></i>';
     completeBtn.addEventListener('click', () => toggleTask(task.id));
     
     const deleteBtn = document.createElement('button');
