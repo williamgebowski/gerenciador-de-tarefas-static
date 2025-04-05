@@ -62,9 +62,10 @@ body {
 .header-decoration, .footer-decoration {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
     margin: 20px 0;
-    opacity: 0.5;
+    opacity: 0.7;
+    flex-wrap: wrap;
 }
 
 .decoration-item {
@@ -72,7 +73,6 @@ body {
     transition: var(--transition);
     animation: float 3s ease-in-out infinite;
     cursor: pointer;
-    opacity: 0.7;
 }
 
 .decoration-item:hover {
@@ -81,11 +81,19 @@ body {
 }
 
 .decoration-item:nth-child(2) {
-    animation-delay: 0.5s;
+    animation-delay: 0.2s;
 }
 
 .decoration-item:nth-child(3) {
-    animation-delay: 1s;
+    animation-delay: 0.4s;
+}
+
+.decoration-item:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.decoration-item:nth-child(5) {
+    animation-delay: 0.8s;
 }
 
 @keyframes float {
@@ -153,20 +161,23 @@ h1 {
 }
 
 .todo-input button {
-    padding: 12px 20px;
+    padding: 12px;
+    width: 48px;
+    height: 48px;
     background-color: var(--secondary-color);
     color: white;
     border: none;
     border-radius: var(--border-radius);
-    font-size: 1em;
+    font-size: 1.5em;
     cursor: pointer;
     transition: var(--transition);
-    white-space: nowrap;
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+    justify-content: center;
+}
+
+.todo-input button span {
+    display: none;
 }
 
 .todo-input button:hover {
@@ -175,18 +186,21 @@ h1 {
 }
 
 .tasks-section {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .task-list {
     list-style: none;
-    margin: 20px 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.task-list:not(:empty) {
+    margin: 10px 0;
 }
 
 .task-item {
@@ -334,7 +348,12 @@ h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1em;
     color: var(--primary-color);
-    gap: 10px;
+}
+
+.stats-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .stats-title {
@@ -350,6 +369,9 @@ h1 {
     font-size: 0.9em;
     min-width: 24px;
     text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .show-stats-btn:hover {
@@ -457,36 +479,42 @@ h1 {
     font-family: 'Montserrat', sans-serif;
 }
 
+.signature {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    font-style: italic;
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+.signature:hover {
+    opacity: 1;
+    color: var(--primary-color);
+}
+
 @media (max-width: 768px) {
     body {
         padding: 10px;
     }
 
     .container {
-        padding: 20px;
+        padding: 15px;
     }
 
     .todo-input {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .todo-input input {
-        padding: 15px 16px 15px 45px;
-        font-size: 1.1em;
-    }
-
-    .todo-input button {
-        width: 100%;
-        justify-content: center;
-        padding: 15px 20px;
-        font-size: 1.1em;
+        padding: 12px 16px 12px 45px;
+        font-size: 1em;
     }
 
     .task-item {
-        flex-direction: row;
-        align-items: center;
-        gap: 15px;
-        padding: 20px;
+        padding: 12px;
+        gap: 10px;
     }
 
     .task-content {
@@ -495,75 +523,128 @@ h1 {
     }
 
     .task-text {
-        font-size: 1.1em;
+        font-size: 1em;
         margin-right: 0;
     }
 
     .task-time {
-        font-size: 0.9em;
+        font-size: 0.8em;
     }
 
     .task-actions {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        justify-content: end;
+        display: flex;
+        gap: 8px;
     }
 
-    .history-item {
-        flex-direction: row;
-        align-items: center;
-        gap: 15px;
-        padding: 20px;
-    }
-
-    .history-text {
+    .task-actions button {
+        width: 36px;
+        height: 36px;
+        padding: 8px;
         font-size: 1.1em;
     }
 
+    .history-item {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .history-text {
+        font-size: 1em;
+    }
+
     .history-time {
-        font-size: 0.9em;
-        margin-top: 5px;
+        font-size: 0.8em;
     }
 
     .history-actions {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        justify-content: end;
+        display: flex;
+        gap: 8px;
+    }
+
+    .restore-btn, .delete-permanent-btn {
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+        font-size: 1.1em;
     }
 
     .show-stats-btn {
-        padding: 20px;
-        font-size: 1.2em;
+        padding: 15px;
+        font-size: 1.1em;
+    }
+
+    .stats-info {
+        gap: 10px;
     }
 
     .stats-count {
-        padding: 6px 12px;
-        font-size: 1em;
-        min-width: 32px;
+        padding: 3px 6px;
+        min-width: 22px;
+        font-size: 0.85em;
+    }
+
+    .signature {
+        margin-top: 15px;
+        font-size: 0.85em;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 15px;
+        padding: 12px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .decoration-item {
+        font-size: 1.4em;
     }
 
     .task-actions, .history-actions {
-        grid-template-columns: repeat(4, 1fr);
+        display: flex;
+        gap: 6px;
     }
 
-    .task-text {
+    .task-actions button, .restore-btn, .delete-permanent-btn {
+        width: 32px;
+        height: 32px;
+        padding: 6px;
         font-size: 1em;
     }
 
+    .task-text {
+        font-size: 0.95em;
+    }
+
     .task-time {
-        font-size: 0.85em;
+        font-size: 0.75em;
     }
 
     .show-stats-btn {
-        padding: 15px;
-        font-size: 1.1em;
+        padding: 12px;
+        font-size: 1em;
+    }
+
+    .stats-info {
+        gap: 8px;
+    }
+
+    .stats-count {
+        padding: 2px 5px;
+        min-width: 20px;
+        font-size: 0.8em;
+    }
+
+    .header-decoration, .footer-decoration {
+        gap: 8px;
+        margin: 12px 0;
+    }
+
+    .signature {
+        margin-top: 12px;
+        font-size: 0.8em;
     }
 } 

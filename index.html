@@ -27,6 +27,8 @@
             <span class="decoration-item">☕</span>
             <span class="decoration-item">📝</span>
             <span class="decoration-item">☕</span>
+            <span class="decoration-item">📝</span>
+            <span class="decoration-item">☕</span>
         </div>
 
         <h1>Café & Notes</h1>
@@ -36,7 +38,6 @@
                    aria-label="Adicionar nova nota" maxlength="200" autocomplete="off">
             <button type="button" id="addButton" aria-label="Adicionar nota">
                 <i class="fas fa-plus" aria-hidden="true"></i>
-                <span>Adicionar</span>
             </button>
         </form>
 
@@ -45,8 +46,10 @@
 
             <div class="completed-stats">
                 <button id="showCompletedBtn" class="show-stats-btn">
-                    <span class="stats-title">Concluídas</span>
-                    <span class="stats-count" id="completedTasks">0</span>
+                    <div class="stats-info">
+                        <span class="stats-count" id="completedTasks">0</span>
+                        <span class="stats-title">Concluídas</span>
+                    </div>
                     <i class="fas fa-chevron-down" aria-hidden="true"></i>
                 </button>
                 <div id="completedHistoryContainer" class="history-container">
@@ -56,8 +59,10 @@
 
             <div class="deleted-stats">
                 <button id="showDeletedBtn" class="show-stats-btn">
-                    <span class="stats-title">Lixeira</span>
-                    <span class="stats-count" id="deletedTasks">0</span>
+                    <div class="stats-info">
+                        <span class="stats-count" id="deletedTasks">0</span>
+                        <span class="stats-title">Lixeira</span>
+                    </div>
                     <i class="fas fa-chevron-down" aria-hidden="true"></i>
                 </button>
                 <div id="deletedHistoryContainer" class="history-container">
@@ -70,6 +75,12 @@
             <span class="decoration-item">📝</span>
             <span class="decoration-item">☕</span>
             <span class="decoration-item">📝</span>
+            <span class="decoration-item">☕</span>
+            <span class="decoration-item">📝</span>
+        </div>
+        
+        <div class="signature">
+            Desenvolvido por William Gebowski
         </div>
     </main>
 
