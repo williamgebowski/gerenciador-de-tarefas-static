@@ -141,24 +141,26 @@ button:hover {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 20px;
 }
 
 .task-item {
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 15px;
-    border-radius: 10px;
+    padding: 16px;
+    border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border: 1px solid #a87c5f;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(92, 64, 50, 0.1);
+    min-height: 76px;
 }
 
 .task-item:hover {
     transform: translateX(5px);
-    box-shadow: 0 4px 8px rgba(92, 64, 50, 0.1);
+    box-shadow: 0 4px 8px rgba(92, 64, 50, 0.15);
 }
 
 .task-item.completed {
@@ -168,9 +170,14 @@ button:hover {
 
 .task-text {
     flex: 1;
-    margin-right: 10px;
+    margin-right: 16px;
     font-size: 1.1em;
     color: #5c4032;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 1.4;
+    word-break: break-word;
 }
 
 .task-text.completed {
@@ -181,17 +188,18 @@ button:hover {
 
 .task-actions {
     display: flex;
-    gap: 10px;
+    gap: 12px;
+    padding: 0 8px;
 }
 
 /* Botões de ação da tarefa */
 .complete-btn,
 .delete-btn {
     background: white;
-    border: none;
+    border: 2px solid;
     padding: 0;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease-in-out;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -203,6 +211,7 @@ button:hover {
 
 .complete-btn {
     color: #68a357;
+    border-color: #68a357;
 }
 
 .complete-btn:hover {
@@ -214,6 +223,7 @@ button:hover {
 
 .delete-btn {
     color: #c17676;
+    border-color: #c17676;
 }
 
 .delete-btn:hover {
@@ -258,11 +268,19 @@ button:hover {
     }
 
     .task-item {
-        padding: 12px;
+        padding: 14px;
+        min-height: 72px;
     }
 
     .task-text {
         font-size: 1em;
+        margin-right: 12px;
+        padding: 6px;
+    }
+
+    .task-actions {
+        gap: 10px;
+        padding: 0 6px;
     }
 
     .complete-btn,
@@ -303,13 +321,15 @@ button:hover {
         align-items: flex-start;
         gap: 12px;
         padding: 12px;
+        min-height: auto;
     }
 
     .task-text {
         width: 100%;
         margin-right: 0;
-        font-size: 1em;
-        word-break: break-word;
+        padding: 8px;
+        min-height: auto;
+        text-align: left;
     }
 
     .task-actions {
@@ -317,6 +337,7 @@ button:hover {
         gap: 12px;
         align-self: flex-end;
         margin-top: 8px;
+        padding: 0;
     }
 
     .complete-btn,
