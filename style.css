@@ -199,6 +199,8 @@ h1::after {
     transition: color 0.3s ease;
     font-family: 'Patrick Hand', cursive;
     font-size: 1.1rem;
+    letter-spacing: 0.3px;
+    color: #5c4032;
 }
 
 #taskList li.completed .task-text {
