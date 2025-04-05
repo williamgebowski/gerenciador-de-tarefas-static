@@ -56,15 +56,33 @@ body {
     filter: drop-shadow(0 3px 5px rgba(168, 124, 95, 0.3));
 }
 
+/* Logo */
+.logo-container {
+    text-align: center;
+    margin: 1rem 0 2rem;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+    filter: drop-shadow(0 4px 6px rgba(168, 124, 95, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05) rotate(-5deg);
+}
+
 /* Título */
 h1 {
     color: #5c4032;
     text-align: center;
-    margin: 1rem 0 2.5rem;
+    margin: 0 0 2.5rem;
     font-family: 'Patrick Hand', cursive;
     font-size: 2.4rem;
     font-weight: normal;
     text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.8);
+    position: relative;
 }
 
 h1::after {
@@ -321,6 +339,10 @@ h1::after {
         font-size: 1.4rem;
         gap: 1.5rem;
     }
+
+    .logo {
+        width: 100px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -388,5 +410,13 @@ h1::after {
     .todo-stats {
         font-size: 1rem;
         margin-top: 1.5rem;
+    }
+
+    .logo {
+        width: 80px;
+    }
+    
+    .logo-container {
+        margin: 0.5rem 0 1.5rem;
     }
 } 
