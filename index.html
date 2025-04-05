@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Uma elegante lista de tarefas com design vintage e funcionalidades modernas">
-    <meta name="theme-color" content="#f8e8d8">
-    <title>To-Do List Vintage</title>
+    <meta name="description" content="Uma elegante lista de tarefas com design vintage de café e livros">
+    <meta name="theme-color" content="#f5e6d3">
+    <title>Lista de Tarefas</title>
     <!-- Favicon configurations -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -13,35 +13,35 @@
     <!-- Styles and fonts -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="header-decoration" role="presentation">
-            <span class="decoration-item" aria-hidden="true">📝</span>
-            <span class="decoration-item" aria-hidden="true">✏️</span>
-            <span class="decoration-item" aria-hidden="true">📚</span>
+        <div class="header-decoration" role="presentation" aria-hidden="true">
+            <span class="decoration-item">📝</span>
+            <span class="decoration-item">✏️</span>
+            <span class="decoration-item">📚</span>
         </div>
         <div class="logo-container">
-            <img src="logo.png" alt="Logo To-Do List Vintage" class="logo-img" width="100" height="100">
+            <img src="logo.png" alt="Logo Lista de Tarefas Vintage" class="logo-img" width="100" height="100">
         </div>
-        <h1>To-Do List</h1>
+        <h1>Lista de Tarefas Vintage</h1>
         <div class="todo-input">
-            <input type="text" id="taskInput" placeholder="Adicione uma nova tarefa..." aria-label="Nova tarefa">
+            <input type="text" id="taskInput" placeholder="Digite uma nova tarefa..." aria-label="Nova tarefa" autocomplete="off">
             <button id="addButton" aria-label="Adicionar tarefa">
-                <i class="fas fa-plus"></i>
+                <i class="fas fa-plus" aria-hidden="true"></i>
             </button>
         </div>
-        <ul id="taskList" role="list"></ul>
-        <div class="todo-stats" role="status">
+        <ul id="taskList" role="list" aria-label="Lista de tarefas"></ul>
+        <div class="todo-stats" role="status" aria-live="polite">
             <span id="totalTasks">0 tarefas</span>
             <span aria-hidden="true">·</span>
-            <span id="completedTasks">0 completadas</span>
+            <span id="completedTasks">0 concluídas</span>
         </div>
-        <div class="footer-decoration" role="presentation">
-            <span class="decoration-item" aria-hidden="true">📌</span>
-            <span class="decoration-item" aria-hidden="true">📋</span>
-            <span class="decoration-item" aria-hidden="true">🎯</span>
+        <div class="footer-decoration" role="presentation" aria-hidden="true">
+            <span class="decoration-item">📌</span>
+            <span class="decoration-item">📋</span>
+            <span class="decoration-item">🎯</span>
         </div>
     </div>
     <script src="script.js"></script>

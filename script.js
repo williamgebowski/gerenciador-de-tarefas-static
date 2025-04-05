@@ -13,7 +13,7 @@ function updateStats() {
     const total = tasks.length;
     const completed = tasks.filter(task => task.completed).length;
     totalTasksSpan.textContent = `${total} tarefa${total !== 1 ? 's' : ''}`;
-    completedTasksSpan.textContent = `${completed} completada${completed !== 1 ? 's' : ''}`;
+    completedTasksSpan.textContent = `${completed} concluída${completed !== 1 ? 's' : ''}`;
 }
 
 // Criar elemento de tarefa
@@ -35,13 +35,43 @@ function createTaskElement(task) {
     completeButton.className = 'complete-btn';
     completeButton.setAttribute('aria-label', task.completed ? 'Desfazer tarefa' : 'Completar tarefa');
     completeButton.innerHTML = `<i class="fas ${task.completed ? 'fa-undo' : 'fa-check-circle'}"></i>`;
-    completeButton.onclick = () => toggleTask(task.id);
+    
+    // Adicionar eventos touch e clique
+    completeButton.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        completeButton.classList.add('active');
+    });
+    
+    completeButton.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        completeButton.classList.remove('active');
+        toggleTask(task.id);
+    });
+
+    completeButton.addEventListener('click', () => {
+        toggleTask(task.id);
+    });
 
     const deleteButton = document.createElement('button');
     deleteButton.className = 'delete-btn';
     deleteButton.setAttribute('aria-label', 'Remover tarefa');
     deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-    deleteButton.onclick = () => removeTask(task.id);
+    
+    // Adicionar eventos touch e clique
+    deleteButton.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        deleteButton.classList.add('active');
+    });
+    
+    deleteButton.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        deleteButton.classList.remove('active');
+        removeTask(task.id);
+    });
+
+    deleteButton.addEventListener('click', () => {
+        removeTask(task.id);
+    });
 
     taskActions.appendChild(completeButton);
     taskActions.appendChild(deleteButton);
@@ -105,6 +135,6 @@ taskInput.addEventListener('keypress', (e) => {
     }
 });
 
-// Inicialização
+// Renderizar tarefas iniciais
 renderTasks();
 updateStats(); 
