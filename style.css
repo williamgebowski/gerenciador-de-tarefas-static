@@ -62,14 +62,15 @@ body {
     margin: 1rem 0 2rem;
 }
 
-.logo {
-    width: 120px;
-    height: auto;
-    filter: drop-shadow(0 4px 6px rgba(168, 124, 95, 0.2));
+.logo-img {
+    width: 100px;
+    display: block;
+    margin: 0 auto 1rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
     transition: transform 0.3s ease;
 }
 
-.logo:hover {
+.logo-img:hover {
     transform: scale(1.05) rotate(-5deg);
 }
 
@@ -340,8 +341,8 @@ h1::after {
         gap: 1.5rem;
     }
 
-    .logo {
-        width: 100px;
+    .logo-img {
+        width: 80px;
     }
 }
 
@@ -412,8 +413,8 @@ h1::after {
         margin-top: 1.5rem;
     }
 
-    .logo {
-        width: 80px;
+    .logo-img {
+        width: 70px;
     }
     
     .logo-container {
