@@ -26,13 +26,24 @@ body {
     border-radius: 24px;
     box-shadow: 
         0 8px 30px rgba(168, 124, 95, 0.15),
-        0 2px 4px rgba(0, 0, 0, 0.05);
+        0 2px 4px rgba(0, 0, 0, 0.05),
+        inset 0 1px 2px rgba(255, 255, 255, 0.5);
     padding: 2.5rem;
     width: 100%;
     max-width: 600px;
     position: relative;
     border: 2px solid #a87c5f30;
     backdrop-filter: blur(5px);
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 12px 40px rgba(168, 124, 95, 0.2),
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        inset 0 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 /* Decorações */
@@ -42,6 +53,7 @@ body {
     gap: 2rem;
     margin: 1rem 0;
     font-size: 1.6rem;
+    opacity: 0.8;
 }
 
 .decoration-item {
@@ -49,29 +61,38 @@ body {
     display: inline-block;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     filter: drop-shadow(0 2px 3px rgba(168, 124, 95, 0.2));
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .decoration-item:hover {
     transform: rotate(5deg) scale(1.2);
     filter: drop-shadow(0 3px 5px rgba(168, 124, 95, 0.3));
+    opacity: 1;
 }
 
 /* Logo */
 .logo-container {
     text-align: center;
     margin: 1rem 0 2rem;
+    position: relative;
 }
 
 .logo-img {
     width: 100px;
     display: block;
     margin: 0 auto 1rem;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-    transition: transform 0.3s ease;
+    filter: 
+        drop-shadow(0 2px 4px rgba(0,0,0,0.1))
+        drop-shadow(0 4px 8px rgba(168, 124, 95, 0.15));
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: center;
 }
 
 .logo-img:hover {
-    transform: scale(1.05) rotate(-5deg);
+    transform: scale(1.08) rotate(-5deg);
+    filter: 
+        drop-shadow(0 4px 8px rgba(0,0,0,0.15))
+        drop-shadow(0 6px 12px rgba(168, 124, 95, 0.2));
 }
 
 /* Título */

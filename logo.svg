@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background circle with soft shadow -->
+    <circle cx="100" cy="100" r="85" fill="#fff9f0" filter="drop-shadow(0 4px 6px rgba(168, 124, 95, 0.2))"/>
+    
+    <!-- Notepad base -->
+    <path d="M60 45h80c2.761 0 5 2.239 5 5v100c0 2.761-2.239 5-5 5H60c-2.761 0-5-2.239-5-5V50c0-2.761 2.239-5 5-5z" 
+          fill="#fff" 
+          stroke="#5c4032" 
+          stroke-width="2"/>
+    
+    <!-- Paper lines -->
+    <path d="M70 70h60M70 90h60M70 110h60M70 130h40" 
+          stroke="#a87c5f" 
+          stroke-width="2" 
+          stroke-linecap="round" 
+          stroke-dasharray="2 4"/>
+    
+    <!-- Checkmark -->
+    <path d="M120 120l15-15l5 5l-20 20l-15-15l5-5z" 
+          fill="#68a357"/>
+    
+    <!-- Binding holes -->
+    <circle cx="75" cy="45" r="3" fill="#5c4032"/>
+    <circle cx="100" cy="45" r="3" fill="#5c4032"/>
+    <circle cx="125" cy="45" r="3" fill="#5c4032"/>
+    
+    <!-- Decorative corner fold -->
+    <path d="M145 45v15h-15z" 
+          fill="#a87c5f" 
+          opacity="0.2"/>
+</svg> 
