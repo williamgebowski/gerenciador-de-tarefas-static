@@ -209,7 +209,8 @@ button:hover {
     margin-bottom: 20px;
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
+    position: relative;
 }
 
 .task-item {
@@ -220,7 +221,6 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     border: 1px solid var(--secondary-color);
-    transition: var(--transition);
     box-shadow: 0 2px 4px var(--shadow-color);
     min-height: 76px;
     width: 100%;
@@ -228,6 +228,12 @@ button:hover {
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+    transform-origin: center;
+    opacity: 1;
+    will-change: transform, opacity;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .task-item::before {
@@ -264,7 +270,7 @@ button:hover {
     word-break: break-word;
     min-width: 0;
     font-weight: 500;
-    max-width: calc(100% - 120px);
+    max-width: calc(100% - 160px);
     font-family: 'Poppins', sans-serif;
 }
 
@@ -280,6 +286,72 @@ button:hover {
     padding: 0 8px;
     align-items: center;
     flex-shrink: 0;
+    margin-left: auto;
+}
+
+.priority-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    margin-right: 8px;
+}
+
+.priority-btn {
+    background: white;
+    border: 2px solid var(--secondary-color);
+    padding: 0;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    position: relative;
+    overflow: hidden;
+    touch-action: manipulation;
+    -webkit-appearance: none;
+    appearance: none;
+    color: var(--secondary-color);
+    opacity: 0.8;
+}
+
+.priority-btn:hover,
+.priority-btn:focus {
+    background-color: var(--secondary-color);
+    color: white;
+    transform: scale(1.08);
+    box-shadow: 0 4px 8px rgba(139, 107, 74, 0.2);
+    opacity: 1;
+}
+
+.priority-btn i {
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+.priority-btn.move-up-btn,
+.priority-btn.move-down-btn {
+    margin: 0;
+}
+
+.priority-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(0);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.priority-btn:active::after {
+    transform: scale(1);
 }
 
 /* Botões de ação da tarefa */
@@ -356,12 +428,14 @@ button:hover {
 }
 
 /* Estatísticas */
-.todo-stats {
+.todo-stats,
+.completed-stats,
+.deleted-stats {
     text-align: center;
     color: var(--text-color);
     font-size: 1.1em;
-    margin-top: 20px;
-    padding: 15px;
+    margin-top: 12px;
+    padding: 0;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: var(--border-radius);
     border: 1px solid var(--secondary-color);
@@ -371,17 +445,139 @@ button:hover {
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+    opacity: 0.8;
+    transition: var(--transition);
 }
 
-.todo-stats::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
-    pointer-events: none;
+.show-stats-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.show-stats-btn i {
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.show-stats-btn.active i {
+    transform: rotate(180deg);
+}
+
+.history-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-top: 1px solid var(--secondary-color);
+}
+
+.history-container.visible {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.history-list {
+    list-style: none;
+    padding: 12px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--secondary-color);
+    font-size: 0.9em;
+}
+
+.history-text {
+    flex-grow: 1;
+    text-align: left;
+    margin-right: 12px;
+}
+
+.history-time {
+    font-size: 0.8em;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.empty-history {
+    text-align: center;
+    padding: 12px;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.todo-stats:hover,
+.completed-stats:hover,
+.deleted-stats:hover {
+    opacity: 1;
+}
+
+.completed-stats {
+    background-color: rgba(240, 248, 255, 0.9);
+    border-color: var(--accent-color);
+}
+
+@media (max-width: 480px) {
+    .todo-stats,
+    .completed-stats,
+    .deleted-stats {
+        margin-top: 8px;
+        font-size: 1em;
+    }
+
+    .show-stats-btn {
+        padding: 10px;
+    }
+
+    .history-list {
+        padding: 8px;
+    }
+
+    .history-item {
+        padding: 6px;
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 320px) {
+    .todo-stats,
+    .completed-stats,
+    .deleted-stats {
+        margin-top: 6px;
+        font-size: 0.9em;
+    }
+
+    .show-stats-btn {
+        padding: 8px;
+    }
+
+    .history-list {
+        padding: 6px;
+    }
+
+    .history-item {
+        padding: 4px;
+        font-size: 0.8em;
+    }
 }
 
 /* Responsividade */
@@ -426,14 +622,14 @@ button:hover {
     }
 
     .task-text {
-        max-width: calc(100% - 100px);
+        max-width: calc(100% - 140px);
         font-size: 1em;
         margin-right: 12px;
         padding: 6px;
     }
 
     .task-actions {
-        gap: 10px;
+        gap: 8px;
         padding: 0 6px;
     }
 
@@ -452,6 +648,19 @@ button:hover {
         font-size: 1em;
         padding: 12px;
         margin-top: 15px;
+    }
+
+    .priority-actions {
+        gap: 3px;
+    }
+
+    .priority-btn {
+        width: 24px;
+        height: 24px;
+    }
+
+    .priority-btn i {
+        font-size: 0.8rem;
     }
 }
 
@@ -485,21 +694,21 @@ button:hover {
 
     .task-text {
         width: 100%;
-        max-width: calc(100% - 100px);
+        max-width: calc(100% - 120px);
         margin-right: 8px;
         padding: 8px;
         min-height: auto;
         text-align: left;
-        font-size: 1em;
+        font-size: 0.95em;
         line-height: 1.4;
     }
 
     .task-actions {
         display: flex;
-        gap: 8px;
+        gap: 6px;
         align-items: center;
         margin-left: auto;
-        padding: 0;
+        padding: 0 4px;
     }
 
     .complete-btn,
@@ -537,10 +746,41 @@ button:hover {
         }
     }
 
-    .todo-stats {
-        font-size: 0.9em;
+    .todo-stats,
+    .completed-stats,
+    .deleted-stats {
+        margin-top: 8px;
         padding: 10px;
-        margin-top: 12px;
+        font-size: 1em;
+    }
+
+    .todo-stats {
+        gap: 6px;
+    }
+
+    .todo-stats span[aria-hidden="true"] {
+        margin: 0 2px;
+    }
+
+    .priority-actions {
+        gap: 2px;
+    }
+
+    .priority-btn {
+        width: 22px;
+        height: 22px;
+    }
+
+    .priority-btn i {
+        font-size: 0.75rem;
+    }
+
+    .deleted-history-container.visible {
+        margin-top: 8px;
+    }
+    
+    .deleted-stats {
+        margin-top: 8px;
     }
 }
 
@@ -548,11 +788,18 @@ button:hover {
 @media (max-width: 320px) {
     .task-item {
         padding: 10px;
+        min-height: 56px;
     }
 
     .task-text {
+        max-width: calc(100% - 100px);
         font-size: 0.9em;
-        max-width: calc(100% - 80px);
+        margin-right: 6px;
+    }
+
+    .task-actions {
+        gap: 4px;
+        padding: 0 2px;
     }
 
     .complete-btn,
@@ -566,10 +813,41 @@ button:hover {
         font-size: 1rem;
     }
 
-    .todo-stats {
-        font-size: 0.85em;
+    .todo-stats,
+    .completed-stats,
+    .deleted-stats {
+        margin-top: 6px;
         padding: 8px;
-        margin-top: 10px;
+        font-size: 0.9em;
+    }
+
+    .todo-stats {
+        gap: 4px;
+    }
+
+    .todo-stats span[aria-hidden="true"] {
+        margin: 0 2px;
+    }
+
+    .priority-actions {
+        gap: 2px;
+    }
+
+    .priority-btn {
+        width: 20px;
+        height: 20px;
+    }
+
+    .priority-btn i {
+        font-size: 0.7rem;
+    }
+
+    .deleted-history-container.visible {
+        margin-top: 6px;
+    }
+    
+    .deleted-stats {
+        margin-top: 6px;
     }
 }
 
@@ -603,5 +881,190 @@ input:focus {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+.task-item.adding {
+    animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.task-item.moving-up {
+    animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    z-index: 2;
+}
+
+.task-item.moving-down {
+    animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    z-index: 2;
+}
+
+.task-item.removing {
+    animation: fadeOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Suporte para preferência de redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+    .task-item {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+.deleted-history-container {
+    margin-top: 0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 0;
+    opacity: 0;
+}
+
+.deleted-history-container.visible {
+    margin-top: 12px;
+    max-height: 500px;
+    opacity: 1;
+}
+
+.deleted-history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.deleted-task-item {
+    background-color: var(--container-bg);
+    padding: 12px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--secondary-color);
+    opacity: 0.8;
+    transition: var(--transition);
+    transform-origin: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.deleted-task-item:hover {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+.deleted-time {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 0.9em;
+    margin-left: auto;
+}
+
+.restore-btn {
+    background: white;
+    border: 2px solid var(--success-color);
+    color: var(--success-color);
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.restore-btn:hover {
+    background-color: var(--success-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.empty-history {
+    text-align: center;
+    color: var(--text-color);
+    opacity: 0.7;
+    padding: 16px;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .deleted-task-item {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    .restore-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .deleted-time {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 480px) {
+    .deleted-task-item {
+        padding: 8px;
+        font-size: 0.9em;
+        flex-wrap: wrap;
+    }
+
+    .deleted-time {
+        font-size: 0.8em;
+        width: 100%;
+        margin: 4px 0;
+        text-align: left;
+    }
+
+    .restore-btn {
+        width: 30px;
+        height: 30px;
     }
 } 

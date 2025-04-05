@@ -33,10 +33,32 @@
             </button>
         </div>
         <ul id="taskList" role="list" aria-label="Lista de notas"></ul>
-        <div class="todo-stats" role="status" aria-live="polite">
-            <span id="totalTasks">0 tarefas</span>
-            <span aria-hidden="true">·</span>
-            <span id="completedTasks">0 concluídas</span>
+        <div class="todo-stats">
+            <button id="showTotalBtn" class="show-stats-btn">
+                <span id="totalTasks">0 notas</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="totalHistoryContainer" class="history-container">
+                <ul id="totalHistoryList" class="history-list"></ul>
+            </div>
+        </div>
+        <div class="completed-stats">
+            <button id="showCompletedBtn" class="show-stats-btn">
+                <span id="completedTasks">0 concluídas</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="completedHistoryContainer" class="history-container">
+                <ul id="completedHistoryList" class="history-list"></ul>
+            </div>
+        </div>
+        <div class="deleted-stats">
+            <button id="showDeletedBtn" class="show-stats-btn">
+                <span id="deletedTasks">0 excluídas</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="deletedHistoryContainer" class="history-container">
+                <ul id="deletedHistoryList" class="history-list"></ul>
+            </div>
         </div>
         <div class="footer-decoration" role="presentation" aria-hidden="true">
             <span class="decoration-item">📌</span>
