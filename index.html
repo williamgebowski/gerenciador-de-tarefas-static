@@ -3,69 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Uma elegante lista de tarefas com ambiente acolhedor de café">
-    <meta name="theme-color" content="#1a0f0a">
+    <meta name="description" content="Café & Notes - Um elegante gerenciador de notas com tema vintage de café">
+    <meta name="theme-color" content="#2c1810">
     <title>Café & Notes</title>
-    <!-- Favicon configurations -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="favicon.ico">
-    <!-- Styles and fonts -->
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo.png">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
+    <main class="container" role="main">
         <div class="header-decoration" role="presentation" aria-hidden="true">
             <span class="decoration-item">☕</span>
             <span class="decoration-item">📝</span>
-            <span class="decoration-item">📚</span>
+            <span class="decoration-item">☕</span>
         </div>
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo Café & Notes" class="logo-img" width="100" height="100">
-        </div>
+
         <h1>Café & Notes</h1>
-        <div class="todo-input">
-            <input type="text" id="taskInput" placeholder="Adicione uma nova nota..." aria-label="Nova nota">
-            <button id="addButton" aria-label="Adicionar nota">
+
+        <form class="todo-input" onsubmit="return false;">
+            <input type="text" id="taskInput" placeholder="Digite sua nota..." 
+                   aria-label="Adicionar nova nota" maxlength="200" autocomplete="off">
+            <button type="button" id="addButton" aria-label="Adicionar nota">
                 <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>Adicionar</span>
             </button>
-        </div>
-        <ul id="taskList" role="list" aria-label="Lista de notas"></ul>
-        <div class="todo-stats">
-            <button id="showTotalBtn" class="show-stats-btn">
-                <span id="totalTasks">0 notas</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div id="totalHistoryContainer" class="history-container">
-                <ul id="totalHistoryList" class="history-list"></ul>
+        </form>
+
+        <section class="tasks-section" aria-label="Lista de notas">
+            <ul id="taskList" class="task-list" role="list"></ul>
+
+            <div class="completed-stats">
+                <button id="showCompletedBtn" class="show-stats-btn">
+                    <span class="stats-title">Concluídas</span>
+                    <span class="stats-count" id="completedTasks">0</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div id="completedHistoryContainer" class="history-container">
+                    <ul id="completedHistoryList" class="history-list" role="list"></ul>
+                </div>
             </div>
-        </div>
-        <div class="completed-stats">
-            <button id="showCompletedBtn" class="show-stats-btn">
-                <span id="completedTasks">0 concluídas</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div id="completedHistoryContainer" class="history-container">
-                <ul id="completedHistoryList" class="history-list"></ul>
+
+            <div class="deleted-stats">
+                <button id="showDeletedBtn" class="show-stats-btn">
+                    <span class="stats-title">Lixeira</span>
+                    <span class="stats-count" id="deletedTasks">0</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div id="deletedHistoryContainer" class="history-container">
+                    <ul id="deletedHistoryList" class="history-list" role="list"></ul>
+                </div>
             </div>
-        </div>
-        <div class="deleted-stats">
-            <button id="showDeletedBtn" class="show-stats-btn">
-                <span id="deletedTasks">0 excluídas</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div id="deletedHistoryContainer" class="history-container">
-                <ul id="deletedHistoryList" class="history-list"></ul>
-            </div>
-        </div>
+        </section>
+
         <div class="footer-decoration" role="presentation" aria-hidden="true">
-            <span class="decoration-item">📌</span>
-            <span class="decoration-item">✨</span>
-            <span class="decoration-item">🎯</span>
+            <span class="decoration-item">📝</span>
+            <span class="decoration-item">☕</span>
+            <span class="decoration-item">📝</span>
         </div>
-    </div>
-    <script src="script.js"></script>
+    </main>
+
+    <script src="js/script.js"></script>
 </body>
 </html> 

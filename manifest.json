@@ -1,0 +1,25 @@
+{
+    "name": "Café & Notes",
+    "short_name": "Café Notes",
+    "description": "Um elegante gerenciador de notas com tema vintage de café",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1a0f0a",
+    "theme_color": "#2c1810",
+    "icons": [
+        {
+            "src": "assets/favicon.ico",
+            "sizes": "16x16 32x32",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "assets/logo.png",
+            "sizes": "180x180",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["productivity", "utilities"],
+    "orientation": "any",
+    "prefer_related_applications": false
+} 

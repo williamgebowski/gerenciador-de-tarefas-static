@@ -1,81 +1,159 @@
-# 📝 To-Do List Vintage
+# Café & Notes - Gerenciador de Notas
 
-Uma aplicação web de lista de tarefas com tema vintage, totalmente responsiva e que salva suas tarefas localmente no navegador. Design elegante e intuitivo, perfeito para organizar seu dia a dia.
+Um elegante e intuitivo gerenciador de notas com tema vintage de café, desenvolvido com JavaScript puro, HTML5 e CSS3.
 
-## 🚀 Funcionalidades
+## Características
 
-- ✏️ Adicionar novas tarefas
-- ✅ Marcar tarefas como concluídas
-- 🗑️ Remover tarefas
-- 💾 Persistência local (salva no navegador)
-- 📱 Design responsivo
-- 🎨 Tema vintage com animações suaves
+- **Design Responsivo**: Interface adaptável para todos os dispositivos
+- **Tema Vintage**: Inspirado em cafeterias clássicas
+- **Animações Suaves**: Transições e feedback visual agradáveis
+- **Persistência de Dados**: Armazenamento local das notas
+- **Gerenciamento Completo**: 
+  - Adicionar, editar e excluir notas
+  - Marcar como concluídas
+  - Priorizar notas (mover para cima/baixo)
+  - Histórico de notas excluídas
+  - Restaurar notas excluídas
+  - Remoção permanente
 
-## 💻 Como Usar Localmente
+## Funcionalidades Detalhadas
+
+### Notas Ativas
+- Criação rápida de notas
+- Reordenação por prioridade
+- Visualização do histórico de criação
+- Interface limpa e organizada
+
+### Notas Concluídas
+- Seção separada para notas finalizadas
+- Registro do momento de conclusão
+- Possibilidade de desfazer conclusão
+- Histórico de conclusões
+
+### Notas Excluídas
+- Sistema de lixeira com histórico
+- Opção de restauração
+- Remoção permanente com confirmação
+- Limite de 30 notas excluídas
+
+## Tecnologias Utilizadas
+
+- **HTML5**
+  - Semântica moderna
+  - Acessibilidade integrada
+  - Atributos ARIA
+
+- **CSS3**
+  - Flexbox e Grid
+  - Variáveis CSS
+  - Animações e Transições
+  - Media Queries
+  - Temas personalizados
+
+- **JavaScript**
+  - ES6+
+  - LocalStorage
+  - Manipulação DOM
+  - Event Handling
+  - Animações JavaScript
+
+## Acessibilidade
+
+- Suporte a navegação por teclado
+- Labels descritivos
+- Contraste adequado
+- Feedback visual e textual
+- Suporte a leitores de tela
+- Redução de movimento (prefers-reduced-motion)
+
+## Performance
+
+- Animações otimizadas
+- Carregamento eficiente
+- Manipulação DOM otimizada
+- Armazenamento local eficiente
+- Código limpo e modular
+
+## Responsividade
+
+- Desktop (1200px+)
+- Tablet (768px - 1199px)
+- Mobile (480px - 767px)
+- Mobile pequeno (320px - 479px)
+
+## Instalação
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/williamgebowski/gerenciador-de-tarefas-static.git
+git clone https://github.com/seu-usuario/cafe-notes.git
 ```
 
-2. Abra o arquivo `index.html` no seu navegador
+2. Abra o arquivo index.html em um navegador moderno
 
-3. Comece a adicionar suas tarefas!
+## Desenvolvimento
 
-## 🌐 Publicação no GitHub Pages
+Para contribuir ou modificar:
 
-1. Acesse o repositório no GitHub
-2. Vá em Settings > Pages
-3. Selecione a branch `main` como fonte
-4. Salve as configurações
-5. Aguarde alguns minutos para o deploy
+1. Fork o repositório
+2. Crie uma branch para sua feature:
+```bash
+git checkout -b feature/nova-funcionalidade
+```
 
-O site estará disponível em:
-[https://williamgebowski.github.io/gerenciador-de-tarefas-static/](https://williamgebowski.github.io/gerenciador-de-tarefas-static/)
+3. Commit suas mudanças:
+```bash
+git commit -m 'Adiciona nova funcionalidade'
+```
 
-## 🎨 Design e Tecnologias
+4. Push para a branch:
+```bash
+git push origin feature/nova-funcionalidade
+```
 
-### Estilo Visual
-- Layout responsivo (mobile/desktop/tablet)
-- Tema retrô com cores suaves:
-  - Bege claro (#f8e8d8)
-  - Marrom suave (#a87c5f)
-  - Verde pastel (#68a357)
-- Fontes manuscritas (Patrick Hand)
-- Ícones personalizados do Font Awesome
-- Animações suaves e interativas
+5. Abra um Pull Request
 
-### Tecnologias Utilizadas
-- HTML5
-- CSS3 (Flexbox, Media Queries, Transições)
-- JavaScript (ES6+)
-- Font Awesome 6.0
-- Google Fonts
-- localStorage para persistência
+## Estrutura do Projeto
 
-## 🔧 Acessibilidade
+```
+cafe-notes/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   └── script.js
+├── assets/
+│   └── images/
+└── README.md
+```
 
-- ARIA labels para melhor leitura por leitores de tela
-- Contraste adequado para leitura
-- Navegação por teclado
-- Feedback visual para interações
-- Estrutura semântica HTML
-- Suporte a preferências de redução de movimento
+## Boas Práticas
 
-## 📱 Responsividade
+- Código comentado e documentado
+- Nomenclatura clara e consistente
+- Separação de responsabilidades
+- Princípios SOLID aplicados
+- DRY (Don't Repeat Yourself)
+- Tratamento de erros
 
-- Layout adaptativo para diferentes tamanhos de tela
-- Ajustes automáticos de fonte e espaçamento
-- Interface otimizada para touch e mouse
-- Experiência consistente em todos os dispositivos
+## Próximos Passos
 
-## 🎯 Créditos
+- [ ] Implementar tags para categorização
+- [ ] Adicionar modo escuro
+- [ ] Sincronização com nuvem
+- [ ] Compartilhamento de notas
+- [ ] Suporte a markdown
+- [ ] Pesquisa avançada
 
-- Design e desenvolvimento: William Gebowski
-- Ícones: Font Awesome
-- Fontes: Google Fonts
-- Inspiração: Designers de planners vintage
+## Licença
 
-## 📸 Preview
+Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE.md](LICENSE.md) para detalhes.
 
-![Preview da To-Do List](preview.png) 
+## Autor
+
+Seu Nome - [seu-email@exemplo.com](mailto:seu-email@exemplo.com)
+
+## Agradecimentos
+
+- Font Awesome pelos ícones
+- Google Fonts pela fonte Poppins
+- Comunidade open source 
