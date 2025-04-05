@@ -32,15 +32,11 @@ function updateTaskCount() {
 function addTask() {
     const taskText = taskInput.value.trim();
     if (taskText) {
-        const task = {
-            id: Date.now(),
-            text: taskText
-        };
-        tasks.push(task);
-        saveTasks();
+        tasks.push({ text: taskText, completed: false });
         renderTasks();
         taskInput.value = '';
         taskInput.focus();
+        updateStats();
     }
 }
 
@@ -55,26 +51,35 @@ function removeTask(id) {
 function renderTasks() {
     taskList.innerHTML = '';
     tasks.forEach(task => {
-        const taskElement = document.createElement('div');
-        taskElement.className = 'todo-item';
-        taskElement.innerHTML = `
-            <span>${task.text}</span>
-            <button onclick="removeTask(${task.id})">
-                <i class="fas fa-trash"></i>
-            </button>
-        `;
+        const taskElement = createTaskElement(task.text);
+        if (task.completed) {
+            taskElement.classList.add('completed');
+        }
         taskList.appendChild(taskElement);
     });
 }
 
 function createTaskElement(taskText) {
     const li = document.createElement('li');
-    li.innerHTML = `
-        <span class="task-text">${taskText}</span>
-        <button class="delete-btn" aria-label="Remover tarefa">
-            <i class="fas fa-trash-alt"></i>
-        </button>
-    `;
+    li.className = 'todo-item';
+    
+    const taskSpan = document.createElement('span');
+    taskSpan.className = 'task-text';
+    taskSpan.textContent = taskText;
+    
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.setAttribute('aria-label', 'Remover tarefa');
+    deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+    
+    deleteBtn.addEventListener('click', () => {
+        li.remove();
+        updateStats();
+    });
+    
+    li.appendChild(taskSpan);
+    li.appendChild(deleteBtn);
+    
     return li;
 }
 

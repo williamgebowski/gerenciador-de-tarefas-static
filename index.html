@@ -3,44 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <title>To-Do List Vintage</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="header-decoration">
-            <span class="decoration-item">📝</span>
-            <span class="decoration-item">✏️</span>
-            <span class="decoration-item">📚</span>
-        </div>
-        <h1>Minha Lista de Tarefas</h1>
-        
+        <h1>📝 To-Do List</h1>
         <div class="todo-input">
             <input type="text" id="taskInput" placeholder="Adicione uma nova tarefa...">
             <button id="addButton">
-                <i class="fas fa-plus-circle"></i>
+                <i class="fas fa-plus"></i>
             </button>
         </div>
-
-        <ul id="taskList">
-            <!-- As tarefas serão inseridas aqui via JavaScript -->
-        </ul>
-
+        <ul id="taskList"></ul>
         <div class="todo-stats">
-            <span id="taskCount">0 tarefas</span>
-        </div>
-        
-        <div class="footer-decoration">
-            <span class="decoration-item">📌</span>
-            <span class="decoration-item">📋</span>
-            <span class="decoration-item">🎯</span>
+            <span id="totalTasks">0 tarefas</span>
+            <span id="completedTasks">0 completadas</span>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html> 
