@@ -60,6 +60,7 @@ O site estará disponível em:
 - Navegação por teclado
 - Feedback visual para interações
 - Estrutura semântica HTML
+- Suporte a preferências de redução de movimento
 
 ## 📱 Responsividade
 
@@ -73,4 +74,8 @@ O site estará disponível em:
 - Design e desenvolvimento: William Gebowski
 - Ícones: Font Awesome
 - Fontes: Google Fonts
-- Inspiração: Designers de planners vintage 
+- Inspiração: Designers de planners vintage
+
+## 📸 Preview
+
+![Preview da To-Do List](preview.png) 
